@@ -31,13 +31,27 @@ const StoreContextProvider = (props) => {
         return totalAmount;
     }
 
+    const calculateDeliveryFee = () => {
+        const deliveryFeePerItem = 4;
+        let itemCount = 0;
+    
+        for (const itemId in cartItems) {
+            if (cartItems.hasOwnProperty(itemId) && cartItems[itemId] > 0) {
+                itemCount += cartItems[itemId];
+            }
+        }
+    
+        return itemCount * deliveryFeePerItem;
+    };
+
     const contextValue = {
         food_list,
         cartItems,
         setCartItems,
         addToCart,
         removeFromCart,
-        getCartTotalAmount
+        getCartTotalAmount,
+        calculateDeliveryFee
     }
 
     return (

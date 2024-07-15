@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
 
-  const { cartItems, food_list, removeFromCart, getCartTotalAmount } = useContext(StoreContext);
+  const { cartItems, food_list, removeFromCart, getCartTotalAmount, calculateDeliveryFee } = useContext(StoreContext);
 
   const navigate = useNavigate();
   return (
@@ -53,7 +53,7 @@ const Cart = () => {
             <hr/>
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>${getCartTotalAmount()===0?0:2}</p>
+              <p>${calculateDeliveryFee()}</p>
             </div>
             <hr />
             <div className="cart-total-details">
