@@ -1,14 +1,20 @@
 import React from 'react'
 import './LoginPopUp.css'
 import { useState } from 'react'
+import { motion } from "framer-motion"
 import { assets } from '../../../../assets/assets'
 
-const LoginPopUp = ({setShowLogin}) => {
+const LoginPopUp = ({ setShowLogin }) => {
 
   const [currState, setCurrState] = useState("Sign Up")
 
+
   return (
-    <div className='login-popup'>
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      className='login-popup'>
       <form className='login-popup-container'>
         <div className="login-popup-title">
           <h2>{currState}</h2>
@@ -30,7 +36,7 @@ const LoginPopUp = ({setShowLogin}) => {
         }
 
       </form>
-    </div>
+    </motion.div>
   )
 }
 

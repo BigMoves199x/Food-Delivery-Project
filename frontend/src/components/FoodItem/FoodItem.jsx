@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import './FoodItem.css'
 import { assets } from '../../../../assets/assets'
 import { StoreContext } from '../../context/StoreContext'
+import { motion } from 'framer-motion'
 
 const FoodItem = ({ id, name, price, description, image }) => {
 
@@ -12,7 +13,10 @@ const FoodItem = ({ id, name, price, description, image }) => {
     };
 
     return (
-        <div className='food-item'>
+        <motion.div 
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        className='food-item'>
             <div className="food-item-img-container">
                 <img className='food-item-image' src={image} alt="" />
                 {cartItems[id] && cartItems[id] > 0 ? (
@@ -33,7 +37,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
                 <p className='food-item-desc'>{description}</p>
                 <p className='food-item-price'>${price}</p>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
